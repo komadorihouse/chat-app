@@ -12,22 +12,24 @@
 </div>
 
 <div class="messages">
+  <% Room.where(id: current_user.id).each do |room| %>
+    <div class="message">
+      <div class="upper-message">
+        <div class="message-user">
+        <Tom>
+        </div>
+        <div class="message_date">
+        2021/5/12(Wed) 12:34:56
+        </div>
+      </div>
+      <div class="lower-message">
+        <div class="message-content">
+        こんにちは。
+        </div>
+      </div>
+    </div>
+  <% end %>
 
-  <div class="message">
-    <div class="upper-message">
-      <div class="message-user">
-      Tom
-      </div>
-      <div class="message_date">
-      2021/5/12(Wed) 12:34:56
-      </div>
-    </div>
-    <div class="lower-message">
-      <div class="message-content">
-      こんにちは。
-      </div>
-    </div>
-  </div>
 
   <div class="message">
     <div class="upper-message">
@@ -46,13 +48,13 @@
   </div>
 
 </div>
-<div class="form">
+<%= form_with model: [@room, @message], class: 'form', local: true do |f| %>
   <div class="form-input">
-    <input class="form-message" placeholder="type a message" type="text">
+    <%= f.text_field :content, class: 'form-message', placeholder: 'type a message' %>
     <label class="form-image">
       <span class="image-file">画像</span>
-      <input type="file" class="hidden">
+      <%= f.file_field :image, class: 'hidden' %>
     </label>
   </div>
-  <input type="submit" name="commit" value="送信" class="form-submit">
-</div>
+  <%= f.submit '送信', class: 'form-submit' %>
+<% end %>
