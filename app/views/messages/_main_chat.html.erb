@@ -12,41 +12,7 @@
 </div>
 
 <div class="messages">
-  <% Room.where(id: current_user.id).each do |room| %>
-    <div class="message">
-      <div class="upper-message">
-        <div class="message-user">
-        <Tom>
-        </div>
-        <div class="message_date">
-        2021/5/12(Wed) 12:34:56
-        </div>
-      </div>
-      <div class="lower-message">
-        <div class="message-content">
-        こんにちは。
-        </div>
-      </div>
-    </div>
-  <% end %>
-
-
-  <div class="message">
-    <div class="upper-message">
-      <div class="message-user">
-      Elen
-      </div>
-      <div class="message_date">
-      2021/5/12(Wed) 22:34:56
-      </div>
-    </div>
-    <div class="lower-message">
-      <div class="message-content">
-      駆逐してやる。
-      </div>
-    </div>
-  </div>
-
+  <%= render partial: 'message', collection: @messages %>
 </div>
 <%= form_with model: [@room, @message], class: 'form', local: true do |f| %>
   <div class="form-input">
