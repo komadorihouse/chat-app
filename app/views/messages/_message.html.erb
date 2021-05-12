@@ -6,7 +6,12 @@
     </div>
     <div class="message-date">
       <!-- 投稿した時刻を出力する -->
-      <%= message.created_at %>
+      <!-- application.rbで日本時間を表示する
+      config.i18n.default_locale = :ja
+      config.time_zone = 'Tokyo'    を追記している。
+      ja.ymi も作成、記述した-->
+      <%= l message.created_at %>
+      <!-- l で現地時間を設定 -->
     </div>
   </div>
   <div class="lower-message">
